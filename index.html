@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valthera Solutions — Equipamentos Industriais de Extração e Processamento</title>
+  <meta name="description" content="Valthera Solutions: referência em equipamentos industriais de extração, purificação e processamento. Extratores de CO₂ supercrítico, ultrassom, micro-ondas e mais." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>⚗️</text></svg>" />
+</head>
+
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3h6l3 7-6 11-6-11z"/>
+            <path d="M12 10v6"/>
+          </svg>
+        </div>
+        <span>Valthera <span class="gradient-text">Solutions</span></span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#setores">Setores</a>
+        <a href="#contato">Contato</a>
+        <a href="#contato" class="btn btn-primary nav-cta">Solicitar Orçamento</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-glow hero-glow--cyan"></div>
+    <div class="hero-glow hero-glow--purple"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          Líder em Engenharia de Processos
+        </div>
+
+        <h1 class="hero-title">
+          Tecnologia de ponta para <span class="gradient-text">extração e processamento</span> industrial
+        </h1>
+
+        <p class="hero-desc">
+          Desenvolvemos e fornecemos equipamentos de alta performance para indústrias alimentícias, 
+          farmacêuticas, cosméticas e químicas. Soluções sob medida com engenharia brasileira.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#produtos" class="btn btn-primary">
+            Conheça Nossos Produtos
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#sobre" class="btn btn-outline">
+            Saiba Mais
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3>150+</h3>
+            <p>Projetos Entregues</p>
+          </div>
+          <div class="hero-stat">
+            <h3>12</h3>
+            <p>Anos de Mercado</p>
+          </div>
+          <div class="hero-stat">
+            <h3>98%</h3>
+            <p>Satisfação do Cliente</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <!-- Inline SVG Hero Visual -->
+          <svg viewBox="0 0 520 390" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; aspect-ratio:4/3; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+            <!-- Extraction vessel -->
+            <rect x="160" y="80" width="70" height="180" rx="35" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+            <rect x="170" y="100" width="50" height="140" rx="25" fill="url(#liquidGrad)" opacity=".6"/>
+            <!-- Pipes -->
+            <line x1="230" y1="140" x2="290" y2="140" stroke="#334155" stroke-width="3"/>
+            <line x1="290" y1="140" x2="290" y2="200" stroke="#334155" stroke-width="3"/>
+            <line x1="290" y1="200" x2="350" y2="200" stroke="#334155" stroke-width="3"/>
+            <!-- Second vessel -->
+            <rect x="350" y="120" width="60" height="140" rx="30" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+            <rect x="358" y="138" width="44" height="104" rx="22" fill="url(#liquidGrad2)" opacity=".5"/>
+            <!-- Gauges -->
+            <circle cx="195" cy="60" r="18" fill="#1e293b" stroke="#06b6d4" stroke-width="1"/>
+            <line x1="195" y1="60" x2="205" y2="50" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="380" cy="100" r="14" fill="#1e293b" stroke="#06b6d4" stroke-width="1"/>
+            <line x1="380" y1="100" x2="388" y2="93" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Control panel -->
+            <rect x="80" y="290" width="360" height="50" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+            <rect x="100" y="302" width="60" height="26" rx="4" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="115" y="320" fill="#22d3ee" font-size="10" font-family="monospace">87.3°C</text>
+            <rect x="180" y="302" width="60" height="26" rx="4" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="189" y="320" fill="#22d3ee" font-size="10" font-family="monospace">320 bar</text>
+            <circle cx="280" cy="315" r="6" fill="#22c55e" opacity=".8"/>
+            <circle cx="300" cy="315" r="6" fill="#22c55e" opacity=".5"/>
+            <circle cx="320" cy="315" r="6" fill="#334155"/>
+            <!-- Valves -->
+            <polygon points="255,135 265,125 275,135" fill="#334155" stroke="#06b6d4" stroke-width="1"/>
+            <polygon points="345,195 355,185 365,195" fill="#334155" stroke="#06b6d4" stroke-width="1"/>
+            <!-- Particle bubbles -->
+            <circle cx="185" cy="180" r="3" fill="#06b6d4" opacity=".4"><animate attributeName="cy" values="180;120;180" dur="3s" repeatCount="indefinite"/></circle>
+            <circle cx="200" cy="200" r="2" fill="#06b6d4" opacity=".3"><animate attributeName="cy" values="200;130;200" dur="4s" repeatCount="indefinite"/></circle>
+            <circle cx="370" cy="210" r="2.5" fill="#06b6d4" opacity=".35"><animate attributeName="cy" values="210;155;210" dur="3.5s" repeatCount="indefinite"/></circle>
+            <defs>
+              <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.5"/>
+              </linearGradient>
+              <linearGradient id="liquidGrad2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="hero-image-overlay"></div>
+        </div>
+
+        <!-- Floating badges -->
+        <div class="float-badge float-badge--top">
+          <div class="badge-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.72rem;color:#94a3b8;">Certificação</div>
+            <div style="font-size:.85rem;">ISO 9001</div>
+          </div>
+        </div>
+
+        <div class="float-badge float-badge--bottom">
+          <div class="badge-icon cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.72rem;color:#94a3b8;">Eficiência</div>
+            <div style="font-size:.85rem;">Alta Performance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section class="products" id="produtos">
+    <div class="container">
+      <div class="products-header reveal">
+        <span class="section-label">Nossos Produtos</span>
+        <h2 class="section-title">Equipamentos de <span class="gradient-text">alta tecnologia</span></h2>
+        <p class="section-desc">
+          Soluções completas para extração, purificação e processamento industrial. 
+          Cada equipamento é projetado para máxima eficiência e qualidade.
+        </p>
+      </div>
+
+      <div class="products-grid" id="products-grid">
+        <!-- Cards serão gerados via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="about-visual reveal">
+        <div class="about-image">
+          <svg viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; aspect-ratio:4/3; background: linear-gradient(135deg, #0f172a, #1e293b);">
+            <!-- Factory floor -->
+            <rect x="50" y="350" width="500" height="60" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+            <!-- Equipment bank -->
+            <rect x="80" y="120" width="100" height="230" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <rect x="220" y="80" width="80" height="270" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <rect x="340" y="140" width="90" height="210" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <rect x="470" y="100" width="70" height="250" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <!-- Interconnecting pipes -->
+            <path d="M180 200 H220" stroke="#334155" stroke-width="3"/>
+            <path d="M300 200 H340" stroke="#334155" stroke-width="3"/>
+            <path d="M430 200 H470" stroke="#334155" stroke-width="3"/>
+            <!-- Glow spots -->
+            <circle cx="130" cy="180" r="20" fill="#06b6d4" opacity=".08"/>
+            <circle cx="260" cy="160" r="25" fill="#8b5cf6" opacity=".06"/>
+            <circle cx="385" cy="200" r="18" fill="#06b6d4" opacity=".08"/>
+            <circle cx="505" cy="170" r="22" fill="#8b5cf6" opacity=".06"/>
+            <!-- Workers silhouettes -->
+            <circle cx="160" cy="310" r="8" fill="#64748b" opacity=".4"/>
+            <rect x="154" y="318" width="12" height="30" rx="4" fill="#64748b" opacity=".3"/>
+            <circle cx="410" cy="320" r="7" fill="#64748b" opacity=".4"/>
+            <rect x="405" y="327" width="10" height="22" rx="4" fill="#64748b" opacity=".3"/>
+            <!-- Digital readouts -->
+            <rect x="95" y="280" width="70" height="24" rx="3" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="108" y="296" fill="#22d3ee" font-size="9" font-family="monospace">RUNNING</text>
+            <rect x="232" y="300" width="56" height="20" rx="3" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="240" y="314" fill="#22d3ee" font-size="8" font-family="monospace">OK ✓</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-label reveal">Sobre Nós</span>
+        <h2 class="section-title reveal">Por que escolher a <span class="gradient-text">Valthera Solutions</span>?</h2>
+        <p class="section-desc reveal">
+          Com mais de uma década de experiência, a Valthera Solutions é referência em engenharia 
+          de equipamentos para extração e processamento industrial. Combinamos inovação tecnológica 
+          com rigor de qualidade para entregar soluções que transformam resultados.
+        </p>
+
+        <div class="about-features">
+          <div class="feature-item reveal reveal-delay-1">
+            <div class="feature-icon cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h4>Engenharia Customizada</h4>
+            <p>Projetos sob medida para sua necessidade</p>
+          </div>
+
+          <div class="feature-item reveal reveal-delay-2">
+            <div class="feature-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h4>Qualidade Certificada</h4>
+            <p>ISO 9001 e padrões GMP internacionais</p>
+          </div>
+
+          <div class="feature-item reveal reveal-delay-3">
+            <div class="feature-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>Suporte Integral</h4>
+            <p>Assistência técnica e treinamento completo</p>
+          </div>
+
+          <div class="feature-item reveal reveal-delay-4">
+            <div class="feature-icon amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <h4>Satisfação Garantida</h4>
+            <p>98% de aprovação dos nossos clientes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTORS ===== -->
+  <section class="sectors" id="setores">
+    <div class="container">
+      <div class="sectors-header reveal">
+        <span class="section-label">Setores de Atuação</span>
+        <h2 class="section-title">Atendemos <span class="gradient-text">diversos segmentos</span></h2>
+        <p class="section-desc">
+          Nossos equipamentos são utilizados por indústrias líderes em todo o Brasil.
+        </p>
+      </div>
+
+      <div class="sectors-grid">
+        <div class="sector-card reveal reveal-delay-1">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Alimentícia</h3>
+          <p>Extração de óleos, essências, aromas e compostos bioativos para alimentos e bebidas.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-2">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <h3>Farmacêutica</h3>
+          <p>Equipamentos GMP para extração e purificação de princípios ativos farmacêuticos.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-3">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Cosmética</h3>
+          <p>Soluções para extração de ingredientes naturais de alta pureza para cosméticos.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-4">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 01-.211.896L4.72 20.55a1 1 0 00.9 1.45h12.76a1 1 0 00.9-1.45l-5.069-10.127A2 2 0 0114 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg>
+          </div>
+          <h3>Química</h3>
+          <p>Equipamentos robustos para processos químicos industriais e pesquisa aplicada.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-1">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 5-2 1 1"/><path d="m2 11 5.36-2.4a1 1 0 0 1 1.29.49l.71 1.42a1 1 0 0 1-.49 1.3L3.5 14"/><path d="m17.64 17.4 2.36-.4 2-4-5-2-1 1"/><path d="m22 11-5.36-2.4a1 1 0 0 0-1.29.49l-.71 1.42a1 1 0 0 0 .49 1.3L20.5 14"/><path d="M12 2v10"/></svg>
+          </div>
+          <h3>Biotecnologia</h3>
+          <p>Tecnologias avançadas para pesquisa e desenvolvimento biotecnológico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div class="cta-glow cta-glow--left"></div>
+        <div class="cta-glow cta-glow--right"></div>
+
+        <span class="section-label" style="justify-content:center;">Vamos Conversar</span>
+        <h2 class="section-title">Pronto para elevar sua <span class="gradient-text">produção industrial</span>?</h2>
+        <p class="section-desc">
+          Entre em contato com nossos especialistas e descubra a solução ideal para o seu processo. 
+          Orçamento personalizado e sem compromisso.
+        </p>
+
+        <div class="cta-actions">
+          <a href="#contato" class="btn btn-primary">
+            Solicitar Orçamento
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://wa.me/5500000000000" class="btn btn-outline" target="_blank" rel="noopener">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.663-1.287A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.231-2.77.765.828-2.678-.267-.412A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contato">
+    <div class="container">
+      <div class="contact-left">
+        <span class="section-label reveal">Contato</span>
+        <h2 class="section-title reveal">Fale com nossos <span class="gradient-text">especialistas</span></h2>
+        <p class="section-desc reveal">
+          Preencha o formulário ou utilize um dos nossos canais de atendimento. 
+          Respondemos em até 24h úteis.
+        </p>
+
+        <div class="contact-info-list">
+          <div class="contact-info-item reveal reveal-delay-1">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Telefone</h4>
+              <p>+55 (11) 0000-0000</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item reveal reveal-delay-2">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>E-mail</h4>
+              <p>contato@valthera.com.br</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item reveal reveal-delay-3">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Endereço</h4>
+              <p>São Paulo, SP — Brasil</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="form-name">Nome Completo</label>
+            <input type="text" id="form-name" name="name" placeholder="Seu nome" required />
+          </div>
+          <div class="form-group">
+            <label for="form-company">Empresa</label>
+            <input type="text" id="form-company" name="company" placeholder="Nome da empresa" />
+          </div>
+          <div class="form-group">
+            <label for="form-email">E-mail</label>
+            <input type="email" id="form-email" name="email" placeholder="seu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="form-phone">Telefone</label>
+            <input type="tel" id="form-phone" name="phone" placeholder="(00) 00000-0000" />
+          </div>
+          <div class="form-group full">
+            <label for="form-product">Produto de Interesse</label>
+            <select id="form-product" name="product">
+              <option value="">Selecione um equipamento</option>
+              <option value="extrator-co2">Extrator de CO₂ Supercrítico</option>
+              <option value="bateria-percoladores">Bateria de Percoladores</option>
+              <option value="extrator-ultrassom">Extrator com Ultrassom (UAE)</option>
+              <option value="recuperador-aromas">Recuperador de Aromas</option>
+              <option value="decanter">Decanter</option>
+              <option value="liofilizador">Liofilizador</option>
+              <option value="coluna-adsorcao">Coluna de Adsorção</option>
+              <option value="extracao-microondas">Extração com Micro-ondas</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="form-message">Mensagem</label>
+            <textarea id="form-message" name="message" placeholder="Descreva sua necessidade ou dúvida..." rows="5"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" id="submit-btn">
+          Enviar Mensagem
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 3h6l3 7-6 11-6-11z"/>
+                <path d="M12 10v6"/>
+              </svg>
+            </div>
+            <span>Valthera <span class="gradient-text">Solutions</span></span>
+          </a>
+          <p>Engenharia de equipamentos para extração e processamento industrial. Inovação, qualidade e suporte especializado.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Produtos</h4>
+          <ul>
+            <li><a href="#produtos">Extrator de CO₂</a></li>
+            <li><a href="#produtos">Bateria de Percoladores</a></li>
+            <li><a href="#produtos">Extrator com Ultrassom</a></li>
+            <li><a href="#produtos">Recuperador de Aromas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Mais Produtos</h4>
+          <ul>
+            <li><a href="#produtos">Decanter</a></li>
+            <li><a href="#produtos">Liofilizador</a></li>
+            <li><a href="#produtos">Coluna de Adsorção</a></li>
+            <li><a href="#produtos">Extração Micro-ondas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#setores">Setores</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#">Carreiras</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Valthera Solutions. Todos os direitos reservados.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Termos de Uso</a>
+          <a href="#">Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== PRODUCT MODAL ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <button class="modal-close" id="modal-close" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal" id="modal">
+      <div class="modal-img" id="modal-img"></div>
+      <div class="modal-body">
+        <span class="modal-tag" id="modal-tag"></span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+        <div class="modal-features">
+          <h4>Características Principais</h4>
+          <ul id="modal-features-list"></ul>
+        </div>
+        <div class="modal-actions">
+          <a href="#contato" class="btn btn-primary" onclick="closeModal()">
+            Solicitar Orçamento
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
