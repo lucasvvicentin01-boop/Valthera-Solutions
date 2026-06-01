@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valthera Solutions — Equipamentos Industriais de Extração e Processamento</title>
+  <meta name="description" content="Valthera Solutions: referência em equipamentos industriais de extração, purificação e processamento. Extratores de CO₂ supercrítico, ultrassom, micro-ondas e mais." />
+  <style>
+/* ============================================================
+   Valthera Solutions — Design System & Global Styles
+   ============================================================ */
+
+/* ---- Google Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* ---- CSS Custom Properties ---- */
+:root {
+  /* Palette */
+  --bg-primary:    #0a0e17;
+  --bg-secondary:  #111827;
+  --bg-card:       rgba(17, 24, 39, .72);
+  --bg-glass:      rgba(17, 24, 39, .45);
+  --surface:       #1f2937;
+  --border:        rgba(56, 189, 248, .12);
+  --border-hover:  rgba(56, 189, 248, .35);
+
+  --accent:        #06b6d4;
+  --accent-light:  #22d3ee;
+  --accent-dark:   #0891b2;
+  --accent-glow:   rgba(6, 182, 212, .25);
+
+  --text-primary:  #f1f5f9;
+  --text-secondary:#94a3b8;
+  --text-muted:    #64748b;
+
+  --gradient-hero: linear-gradient(135deg, #0a0e17 0%, #0c1929 40%, #0f172a 100%);
+  --gradient-accent: linear-gradient(135deg, #06b6d4, #0ea5e9, #8b5cf6);
+  --gradient-card: linear-gradient(160deg, rgba(6,182,212,.08) 0%, rgba(139,92,246,.04) 100%);
+
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Spacing */
+  --section-pad-y: clamp(4rem, 8vw, 8rem);
+  --container-max: 1280px;
+  --gap: 2rem;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --transition: .35s var(--ease-out);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
+
+/* ---- Utilities ---- */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-heading);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.gradient-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: .95rem;
+  padding: .85rem 2rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gradient-accent);
+  color: #fff;
+  box-shadow: 0 4px 24px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(6,182,212,.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-light);
+  border: 1.5px solid var(--border-hover);
+}
+
+.btn-outline:hover {
+  background: rgba(6,182,212,.08);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: var(--transition);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 14, 23, .88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+  padding: .65rem 0;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -.02em;
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon svg { width: 22px; height: 22px; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.nav-links a {
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: var(--transition);
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  padding: .6rem 1.5rem !important;
+  font-size: .85rem !important;
+  color: #fff !important;
+}
+
+/* Mobile hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .15;
+  filter: saturate(.6);
+}
+
+.hero-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: .3;
+  pointer-events: none;
+}
+
+.hero-glow--cyan {
+  background: var(--accent);
+  top: -200px;
+  right: -150px;
+}
+
+.hero-glow--purple {
+  background: #8b5cf6;
+  bottom: -250px;
+  left: -100px;
+  opacity: .18;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(6,182,212,.1);
+  border: 1px solid rgba(6,182,212,.25);
+  border-radius: 100px;
+  padding: .45rem 1.15rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  margin-bottom: 1.75rem;
+  letter-spacing: .04em;
+}
+
+.hero-badge .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(6,182,212,.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(6,182,212,0); }
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -.03em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero-stat h3 {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-stat p {
+  font-size: .82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: .25rem;
+}
+
+/* Hero image side */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10,14,23,.6) 100%);
+  pointer-events: none;
+}
+
+/* Floating badges on hero image */
+.float-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .65rem 1rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: 0 8px 32px rgba(0,0,0,.3);
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-badge--top {
+  top: 12%;
+  right: -20px;
+  animation-delay: 0s;
+}
+
+.float-badge--bottom {
+  bottom: 16%;
+  left: -24px;
+  animation-delay: 3s;
+}
+
+.float-badge .badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.float-badge .badge-icon.green  { background: rgba(34,197,94,.15); color: #22c55e; }
+.float-badge .badge-icon.cyan   { background: rgba(6,182,212,.15); color: var(--accent-light); }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+.products {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.products-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.products-header .section-desc {
+  margin: 0 auto;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--gap);
+}
+
+.product-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.product-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(6,182,212,.1);
+}
+
+.product-card-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+}
+
+.product-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s var(--ease-out);
+}
+
+.product-card:hover .product-card-img img {
+  transform: scale(1.06);
+}
+
+.product-card-img .img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10,14,23,.7) 100%);
+  pointer-events: none;
+}
+
+/* SVG placeholder for missing images */
+.product-card-img .svg-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--surface));
+}
+
+.product-card-img .svg-placeholder svg {
+  width: 64px;
+  height: 64px;
+  color: var(--accent);
+  opacity: .5;
+}
+
+.product-card-body {
+  padding: 1.5rem;
+}
+
+.product-tag {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(6,182,212,.08);
+  padding: .3rem .75rem;
+  border-radius: 100px;
+  margin-bottom: .75rem;
+}
+
+.product-card-body h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: .6rem;
+  line-height: 1.3;
+}
+
+.product-card-body p {
+  font-size: .88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  transition: var(--transition);
+}
+
+.product-link:hover {
+  gap: .65rem;
+  color: #fff;
+}
+
+.product-link svg {
+  width: 16px;
+  height: 16px;
+  transition: var(--transition);
+}
+
+/* ============================================================
+   ABOUT / DIFFERENTIALS
+   ============================================================ */
+.about {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.about .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.about-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(0,0,0,.4);
+}
+
+.about-image img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.feature-item {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.feature-item:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.feature-icon.cyan   { background: rgba(6,182,212,.12);  color: var(--accent-light); }
+.feature-icon.purple { background: rgba(139,92,246,.12); color: #a78bfa; }
+.feature-icon.green  { background: rgba(34,197,94,.12);  color: #4ade80; }
+.feature-icon.amber  { background: rgba(245,158,11,.12); color: #fbbf24; }
+
+.feature-icon svg { width: 22px; height: 22px; }
+
+.feature-item h4 {
+  font-family: var(--font-heading);
+  font-size: .95rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+}
+
+.feature-item p {
+  font-size: .82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SECTORS
+   ============================================================ */
+.sectors {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.sectors-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectors-header .section-desc { margin: 0 auto; }
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.sector-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.sector-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(6,182,212,.08);
+}
+
+.sector-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-card);
+  border: 1px solid var(--border);
+}
+
+.sector-icon svg {
+  width: 30px;
+  height: 30px;
+  color: var(--accent-light);
+}
+
+.sector-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.sector-card p {
+  font-size: .82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   CTA BANNER
+   ============================================================ */
+.cta-banner {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-inner {
+  position: relative;
+  background: var(--gradient-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: .2;
+  pointer-events: none;
+}
+
+.cta-glow--left {
+  background: var(--accent);
+  top: -200px;
+  left: -200px;
+}
+
+.cta-glow--right {
+  background: #8b5cf6;
+  bottom: -200px;
+  right: -200px;
+}
+
+.cta-inner .section-title {
+  max-width: 700px;
+  margin: 0 auto 1rem;
+}
+
+.cta-inner .section-desc {
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact {
+  padding: var(--section-pad-y) 0;
+  background: var(--bg-primary);
+}
+
+.contact .container {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-info-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(6,182,212,.08);
+  border: 1px solid var(--border);
+  color: var(--accent-light);
+}
+
+.contact-info-icon svg { width: 20px; height: 20px; }
+
+.contact-info-item h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: .95rem;
+  margin-bottom: .2rem;
+}
+
+.contact-info-item p {
+  font-size: .88rem;
+  color: var(--text-secondary);
+}
+
+/* Form */
+.contact-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.form-group.full { grid-column: 1 / -1; }
+
+.form-group label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-family: var(--font-body);
+  font-size: .9rem;
+  color: var(--text-primary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .85rem 1rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.form-submit {
+  margin-top: 1.5rem;
+  width: 100%;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 4rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand p {
+  font-size: .88rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-top: 1rem;
+  max-width: 300px;
+}
+
+.footer-social {
+  display: flex;
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  background: rgba(6,182,212,.1);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+.footer-social a svg { width: 18px; height: 18px; }
+
+.footer-col h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: .9rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.footer-col ul a {
+  font-size: .85rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.footer-col ul a:hover {
+  color: var(--accent-light);
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom-links a {
+  font-size: .8rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.footer-bottom-links a:hover { color: var(--accent-light); }
+
+/* ============================================================
+   SCROLL ANIMATIONS
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ============================================================
+   PARTICLES (canvas)
+   ============================================================ */
+#particles-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-content    { max-width: 100%; }
+  .hero-desc       { margin-left: auto; margin-right: auto; }
+  .hero-actions    { justify-content: center; }
+  .hero-stats      { justify-content: center; }
+  .hero-visual     { display: none; }
+
+  .about .container  { grid-template-columns: 1fr; }
+  .about-visual      { order: -1; }
+
+  .contact .container { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6rem 2rem 2rem;
+    background: var(--bg-secondary);
+    border-left: 1px solid var(--border);
+    gap: 1.5rem;
+    transition: var(--transition);
+  }
+
+  .nav-links.open { right: 0; }
+
+  .hamburger { display: flex; }
+
+  .hero-stats { gap: 1.5rem; }
+  .hero-stat h3 { font-size: 1.6rem; }
+
+  .about-features { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+
+  .products-grid { grid-template-columns: 1fr; }
+  .sectors-grid  { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .sectors-grid { grid-template-columns: 1fr; }
+  .cta-inner { padding: 2rem 1.25rem; }
+  .contact-form { padding: 1.5rem; }
+}
+
+/* ============================================================
+   PRODUCT MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  padding: 2rem;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(20px) scale(.97);
+  transition: var(--transition);
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.modal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-body h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: .75rem;
+}
+
+.modal-body .modal-tag {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(6,182,212,.08);
+  padding: .3rem .75rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.modal-body p {
+  font-size: .95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.modal-features {
+  margin-top: 1.5rem;
+}
+
+.modal-features h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: .9rem;
+  margin-bottom: .75rem;
+  color: var(--text-primary);
+}
+
+.modal-features ul {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.modal-features li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .85rem;
+  color: var(--text-secondary);
+}
+
+.modal-features li svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: rgba(239,68,68,.2);
+  border-color: rgba(239,68,68,.4);
+}
+
+.modal-close svg { width: 18px; height: 18px; }
+
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* scrollbar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
+
+</style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>⚗️</text></svg>" />
+</head>
+
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3h6l3 7-6 11-6-11z"/>
+            <path d="M12 10v6"/>
+          </svg>
+        </div>
+        <span>Valthera <span class="gradient-text">Solutions</span></span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#setores">Setores</a>
+        <a href="#contato">Contato</a>
+        <a href="#contato" class="btn btn-primary nav-cta">Solicitar Orçamento</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-glow hero-glow--cyan"></div>
+    <div class="hero-glow hero-glow--purple"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          Líder em Engenharia de Processos
+        </div>
+
+        <h1 class="hero-title">
+          Tecnologia de ponta para <span class="gradient-text">extração e processamento</span> industrial
+        </h1>
+
+        <p class="hero-desc">
+          Desenvolvemos e fornecemos equipamentos de alta performance para indústrias alimentícias, 
+          farmacêuticas, cosméticas e químicas. Soluções sob medida com engenharia brasileira.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#produtos" class="btn btn-primary">
+            Conheça Nossos Produtos
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#sobre" class="btn btn-outline">
+            Saiba Mais
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3>150+</h3>
+            <p>Projetos Entregues</p>
+          </div>
+          <div class="hero-stat">
+            <h3>20</h3>
+            <p>Anos de Mercado</p>
+          </div>
+          <div class="hero-stat">
+            <h3>98%</h3>
+            <p>Satisfação do Cliente</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <!-- Inline SVG Hero Visual -->
+          <svg viewBox="0 0 520 390" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; aspect-ratio:4/3; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+            <!-- Extraction vessel -->
+            <rect x="160" y="80" width="70" height="180" rx="35" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+            <rect x="170" y="100" width="50" height="140" rx="25" fill="url(#liquidGrad)" opacity=".6"/>
+            <!-- Pipes -->
+            <line x1="230" y1="140" x2="290" y2="140" stroke="#334155" stroke-width="3"/>
+            <line x1="290" y1="140" x2="290" y2="200" stroke="#334155" stroke-width="3"/>
+            <line x1="290" y1="200" x2="350" y2="200" stroke="#334155" stroke-width="3"/>
+            <!-- Second vessel -->
+            <rect x="350" y="120" width="60" height="140" rx="30" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+            <rect x="358" y="138" width="44" height="104" rx="22" fill="url(#liquidGrad2)" opacity=".5"/>
+            <!-- Gauges -->
+            <circle cx="195" cy="60" r="18" fill="#1e293b" stroke="#06b6d4" stroke-width="1"/>
+            <line x1="195" y1="60" x2="205" y2="50" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="380" cy="100" r="14" fill="#1e293b" stroke="#06b6d4" stroke-width="1"/>
+            <line x1="380" y1="100" x2="388" y2="93" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Control panel -->
+            <rect x="80" y="290" width="360" height="50" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+            <rect x="100" y="302" width="60" height="26" rx="4" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="115" y="320" fill="#22d3ee" font-size="10" font-family="monospace">87.3°C</text>
+            <rect x="180" y="302" width="60" height="26" rx="4" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="189" y="320" fill="#22d3ee" font-size="10" font-family="monospace">320 bar</text>
+            <circle cx="280" cy="315" r="6" fill="#22c55e" opacity=".8"/>
+            <circle cx="300" cy="315" r="6" fill="#22c55e" opacity=".5"/>
+            <circle cx="320" cy="315" r="6" fill="#334155"/>
+            <!-- Valves -->
+            <polygon points="255,135 265,125 275,135" fill="#334155" stroke="#06b6d4" stroke-width="1"/>
+            <polygon points="345,195 355,185 365,195" fill="#334155" stroke="#06b6d4" stroke-width="1"/>
+            <!-- Particle bubbles -->
+            <circle cx="185" cy="180" r="3" fill="#06b6d4" opacity=".4"><animate attributeName="cy" values="180;120;180" dur="3s" repeatCount="indefinite"/></circle>
+            <circle cx="200" cy="200" r="2" fill="#06b6d4" opacity=".3"><animate attributeName="cy" values="200;130;200" dur="4s" repeatCount="indefinite"/></circle>
+            <circle cx="370" cy="210" r="2.5" fill="#06b6d4" opacity=".35"><animate attributeName="cy" values="210;155;210" dur="3.5s" repeatCount="indefinite"/></circle>
+            <defs>
+              <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.5"/>
+              </linearGradient>
+              <linearGradient id="liquidGrad2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="hero-image-overlay"></div>
+        </div>
+
+        <!-- Floating badges -->
+        <div class="float-badge float-badge--top">
+          <div class="badge-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.72rem;color:#94a3b8;">Certificação</div>
+            <div style="font-size:.85rem;">ISO 9001</div>
+          </div>
+        </div>
+
+        <div class="float-badge float-badge--bottom">
+          <div class="badge-icon cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <div>
+            <div style="font-size:.72rem;color:#94a3b8;">Eficiência</div>
+            <div style="font-size:.85rem;">Alta Performance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section class="products" id="produtos">
+    <div class="container">
+      <div class="products-header reveal">
+        <span class="section-label">Nossos Produtos</span>
+        <h2 class="section-title">Equipamentos de <span class="gradient-text">alta tecnologia</span></h2>
+        <p class="section-desc">
+          Soluções completas para extração, purificação e processamento industrial. 
+          Cada equipamento é projetado para máxima eficiência e qualidade.
+        </p>
+      </div>
+
+      <div class="products-grid" id="products-grid">
+        <!-- Cards serão gerados via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="about-visual reveal">
+        <div class="about-image">
+          <svg viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; aspect-ratio:4/3; background: linear-gradient(135deg, #0f172a, #1e293b);">
+            <!-- Factory floor -->
+            <rect x="50" y="350" width="500" height="60" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+            <!-- Equipment bank -->
+            <rect x="80" y="120" width="100" height="230" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <rect x="220" y="80" width="80" height="270" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <rect x="340" y="140" width="90" height="210" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <rect x="470" y="100" width="70" height="250" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" opacity=".8"/>
+            <!-- Interconnecting pipes -->
+            <path d="M180 200 H220" stroke="#334155" stroke-width="3"/>
+            <path d="M300 200 H340" stroke="#334155" stroke-width="3"/>
+            <path d="M430 200 H470" stroke="#334155" stroke-width="3"/>
+            <!-- Glow spots -->
+            <circle cx="130" cy="180" r="20" fill="#06b6d4" opacity=".08"/>
+            <circle cx="260" cy="160" r="25" fill="#8b5cf6" opacity=".06"/>
+            <circle cx="385" cy="200" r="18" fill="#06b6d4" opacity=".08"/>
+            <circle cx="505" cy="170" r="22" fill="#8b5cf6" opacity=".06"/>
+            <!-- Workers silhouettes -->
+            <circle cx="160" cy="310" r="8" fill="#64748b" opacity=".4"/>
+            <rect x="154" y="318" width="12" height="30" rx="4" fill="#64748b" opacity=".3"/>
+            <circle cx="410" cy="320" r="7" fill="#64748b" opacity=".4"/>
+            <rect x="405" y="327" width="10" height="22" rx="4" fill="#64748b" opacity=".3"/>
+            <!-- Digital readouts -->
+            <rect x="95" y="280" width="70" height="24" rx="3" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="108" y="296" fill="#22d3ee" font-size="9" font-family="monospace">RUNNING</text>
+            <rect x="232" y="300" width="56" height="20" rx="3" fill="#0f172a" stroke="#06b6d4" stroke-width=".5"/>
+            <text x="240" y="314" fill="#22d3ee" font-size="8" font-family="monospace">OK ✓</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-label reveal">Sobre Nós</span>
+        <h2 class="section-title reveal">Por que escolher a <span class="gradient-text">Valthera Solutions</span>?</h2>
+        <p class="section-desc reveal">
+          Com mais de 20 anos de experiência, a Valthera Solutions é referência em engenharia 
+          de equipamentos para extração e processamento industrial. Combinamos inovação tecnológica 
+          com rigor de qualidade para entregar soluções que transformam resultados.
+        </p>
+
+        <div class="about-features">
+          <div class="feature-item reveal reveal-delay-1">
+            <div class="feature-icon cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h4>Engenharia Customizada</h4>
+            <p>Projetos sob medida para sua necessidade</p>
+          </div>
+
+          <div class="feature-item reveal reveal-delay-2">
+            <div class="feature-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h4>Qualidade Certificada</h4>
+            <p>ISO 9001 e padrões GMP internacionais</p>
+          </div>
+
+          <div class="feature-item reveal reveal-delay-3">
+            <div class="feature-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>Suporte Integral</h4>
+            <p>Assistência técnica e treinamento completo</p>
+          </div>
+
+          <div class="feature-item reveal reveal-delay-4">
+            <div class="feature-icon amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <h4>Satisfação Garantida</h4>
+            <p>98% de aprovação dos nossos clientes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTORS ===== -->
+  <section class="sectors" id="setores">
+    <div class="container">
+      <div class="sectors-header reveal">
+        <span class="section-label">Setores de Atuação</span>
+        <h2 class="section-title">Atendemos <span class="gradient-text">diversos segmentos</span></h2>
+        <p class="section-desc">
+          Nossos equipamentos são utilizados por indústrias líderes em todo o Brasil.
+        </p>
+      </div>
+
+      <div class="sectors-grid">
+        <div class="sector-card reveal reveal-delay-1">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Alimentícia</h3>
+          <p>Extração de óleos, essências, aromas e compostos bioativos para alimentos e bebidas.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-2">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <h3>Farmacêutica</h3>
+          <p>Equipamentos GMP para extração e purificação de princípios ativos farmacêuticos.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-3">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Cosmética</h3>
+          <p>Soluções para extração de ingredientes naturais de alta pureza para cosméticos.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-4">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 01-.211.896L4.72 20.55a1 1 0 00.9 1.45h12.76a1 1 0 00.9-1.45l-5.069-10.127A2 2 0 0114 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg>
+          </div>
+          <h3>Química</h3>
+          <p>Equipamentos robustos para processos químicos industriais e pesquisa aplicada.</p>
+        </div>
+
+        <div class="sector-card reveal reveal-delay-1">
+          <div class="sector-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 5-2 1 1"/><path d="m2 11 5.36-2.4a1 1 0 0 1 1.29.49l.71 1.42a1 1 0 0 1-.49 1.3L3.5 14"/><path d="m17.64 17.4 2.36-.4 2-4-5-2-1 1"/><path d="m22 11-5.36-2.4a1 1 0 0 0-1.29.49l-.71 1.42a1 1 0 0 0 .49 1.3L20.5 14"/><path d="M12 2v10"/></svg>
+          </div>
+          <h3>Biotecnologia</h3>
+          <p>Tecnologias avançadas para pesquisa e desenvolvimento biotecnológico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div class="cta-glow cta-glow--left"></div>
+        <div class="cta-glow cta-glow--right"></div>
+
+        <span class="section-label" style="justify-content:center;">Vamos Conversar</span>
+        <h2 class="section-title">Pronto para elevar sua <span class="gradient-text">produção industrial</span>?</h2>
+        <p class="section-desc">
+          Entre em contato com nossos especialistas e descubra a solução ideal para o seu processo. 
+          Orçamento personalizado e sem compromisso.
+        </p>
+
+        <div class="cta-actions">
+          <a href="#contato" class="btn btn-primary">
+            Solicitar Orçamento
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://wa.me/5500000000000" class="btn btn-outline" target="_blank" rel="noopener">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.663-1.287A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.231-2.77.765.828-2.678-.267-.412A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contato">
+    <div class="container">
+      <div class="contact-left">
+        <span class="section-label reveal">Contato</span>
+        <h2 class="section-title reveal">Fale com nossos <span class="gradient-text">especialistas</span></h2>
+        <p class="section-desc reveal">
+          Preencha o formulário ou utilize um dos nossos canais de atendimento. 
+          Respondemos em até 24h úteis.
+        </p>
+
+        <div class="contact-info-list">
+          <div class="contact-info-item reveal reveal-delay-1">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Telefone</h4>
+              <p>(11) 99778-4143</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item reveal reveal-delay-2">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>E-mail</h4>
+              <p>contato@valthera.com.br</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item reveal reveal-delay-3">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Endereço</h4>
+              <p>Av. Brig. Faria Lima, 3400 — Itaim Bibi, São Paulo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="form-name">Nome Completo</label>
+            <input type="text" id="form-name" name="name" placeholder="Seu nome" required />
+          </div>
+          <div class="form-group">
+            <label for="form-company">Empresa</label>
+            <input type="text" id="form-company" name="company" placeholder="Nome da empresa" />
+          </div>
+          <div class="form-group">
+            <label for="form-email">E-mail</label>
+            <input type="email" id="form-email" name="email" placeholder="seu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="form-phone">Telefone</label>
+            <input type="tel" id="form-phone" name="phone" placeholder="(00) 00000-0000" />
+          </div>
+          <div class="form-group full">
+            <label for="form-product">Produto de Interesse</label>
+            <select id="form-product" name="product">
+              <option value="">Selecione um equipamento</option>
+              <option value="extrator-co2">Extrator de CO₂ Supercrítico</option>
+              <option value="bateria-percoladores">Bateria de Percoladores</option>
+              <option value="extrator-ultrassom">Extrator com Ultrassom (UAE)</option>
+              <option value="recuperador-aromas">Recuperador de Aromas</option>
+              <option value="decanter">Decanter</option>
+              <option value="liofilizador">Liofilizador</option>
+              <option value="coluna-adsorcao">Coluna de Adsorção</option>
+              <option value="extracao-microondas">Extração com Micro-ondas</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="form-message">Mensagem</label>
+            <textarea id="form-message" name="message" placeholder="Descreva sua necessidade ou dúvida..." rows="5"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit" id="submit-btn">
+          Enviar Mensagem
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 3h6l3 7-6 11-6-11z"/>
+                <path d="M12 10v6"/>
+              </svg>
+            </div>
+            <span>Valthera <span class="gradient-text">Solutions</span></span>
+          </a>
+          <p>Engenharia de equipamentos para extração e processamento industrial. Inovação, qualidade e suporte especializado.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Produtos</h4>
+          <ul>
+            <li><a href="#produtos">Extrator de CO₂</a></li>
+            <li><a href="#produtos">Bateria de Percoladores</a></li>
+            <li><a href="#produtos">Extrator com Ultrassom</a></li>
+            <li><a href="#produtos">Recuperador de Aromas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Mais Produtos</h4>
+          <ul>
+            <li><a href="#produtos">Decanter</a></li>
+            <li><a href="#produtos">Liofilizador</a></li>
+            <li><a href="#produtos">Coluna de Adsorção</a></li>
+            <li><a href="#produtos">Extração Micro-ondas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#setores">Setores</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#">Carreiras</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Valthera Solutions. Todos os direitos reservados.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Termos de Uso</a>
+          <a href="#">Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== PRODUCT MODAL ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <button class="modal-close" id="modal-close" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal" id="modal">
+      <div class="modal-img" id="modal-img"></div>
+      <div class="modal-body">
+        <span class="modal-tag" id="modal-tag"></span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+        <div class="modal-features">
+          <h4>Características Principais</h4>
+          <ul id="modal-features-list"></ul>
+        </div>
+        <div class="modal-actions">
+          <a href="#contato" class="btn btn-primary" onclick="closeModal()">
+            Solicitar Orçamento
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+/* ============================================================
+   Valthera Solutions — Main Script
+   ============================================================ */
+
+// ---- Product Data ----
+const products = [
+  {
+    id: 'extrator-co2',
+    name: 'Extrator de CO₂ Supercrítico',
+    tag: 'Extração',
+    shortDesc: 'Sistema de extração utilizando CO₂ em estado supercrítico, garantindo extratos puros, sem resíduos de solvente e com alto rendimento.',
+    fullDesc: 'O Extrator de CO₂ Supercrítico da Valthera Solutions utiliza dióxido de carbono em condições acima do ponto crítico (31°C e 73 bar) como solvente verde. Ideal para obtenção de óleos essenciais, oleoresinas, extratos vegetais e compostos bioativos de alta pureza. O processo é seletivo, limpo e ecologicamente correto.',
+    features: [
+      'Pressão de operação: até 700 bar',
+      'Temperatura controlada por PLC',
+      'Sistema de recirculação de CO₂',
+      'Separadores multi-estágio',
+      'Extrato livre de solventes residuais',
+      'Construção em aço inox 316L'
+    ],
+    svgColor: '#06b6d4',
+    svgBg: 'linear-gradient(135deg, #0c1929, #0f2740)',
+    svgContent: `<rect x="100" y="60" width="80" height="200" rx="40" fill="none" stroke="#06b6d4" stroke-width="2"/>
+      <rect x="115" y="90" width="50" height="150" rx="25" fill="url(#pGrad1)" opacity=".5"/>
+      <circle cx="140" cy="40" r="20" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+      <line x1="140" y1="40" x2="152" y2="30" stroke="#22d3ee" stroke-width="2" stroke-linecap="round"/>
+      <text x="130" y="45" fill="#22d3ee" font-size="8" font-family="monospace">bar</text>
+      <line x1="180" y1="130" x2="250" y2="130" stroke="#334155" stroke-width="3"/>
+      <line x1="250" y1="130" x2="250" y2="200" stroke="#334155" stroke-width="3"/>
+      <rect x="230" y="200" width="60" height="60" rx="8" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="243" y="235" fill="#22d3ee" font-size="9" font-family="monospace">CO₂</text>
+      <circle cx="130" cy="170" r="3" fill="#06b6d4" opacity=".5"><animate attributeName="cy" values="170;110;170" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="148" cy="190" r="2" fill="#06b6d4" opacity=".3"><animate attributeName="cy" values="190;120;190" dur="4s" repeatCount="indefinite"/></circle>
+      <defs><linearGradient id="pGrad1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06b6d4" stop-opacity="0.05"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.4"/></linearGradient></defs>`
+  },
+  {
+    id: 'bateria-percoladores',
+    name: 'Bateria de Percoladores',
+    tag: 'Extração',
+    shortDesc: 'Conjunto de percoladores em série para extração sólido-líquido contínua, maximizando o aproveitamento do solvente e da matéria-prima.',
+    fullDesc: 'A Bateria de Percoladores Valthera é projetada para processos de extração sólido-líquido em contracorrente. O sistema em série permite operação contínua, com renovação constante do solvente, aumentando significativamente a eficiência de extração e reduzindo o consumo de energia e insumos.',
+    features: [
+      'Operação em contracorrente',
+      'Configuração modular (3 a 8 estágios)',
+      'Sistema de drenagem automatizado',
+      'Controle de fluxo e temperatura',
+      'Fácil limpeza CIP integrado',
+      'Capacidade de 50L a 5.000L por estágio'
+    ],
+    svgColor: '#0ea5e9',
+    svgBg: 'linear-gradient(135deg, #0c1929, #0f2740)',
+    svgContent: `<rect x="40" y="80" width="50" height="140" rx="10" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+      <rect x="120" y="80" width="50" height="140" rx="10" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+      <rect x="200" y="80" width="50" height="140" rx="10" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+      <rect x="280" y="80" width="50" height="140" rx="10" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+      <line x1="90" y1="140" x2="120" y2="140" stroke="#334155" stroke-width="2.5"/>
+      <line x1="170" y1="140" x2="200" y2="140" stroke="#334155" stroke-width="2.5"/>
+      <line x1="250" y1="140" x2="280" y2="140" stroke="#334155" stroke-width="2.5"/>
+      <rect x="48" y="100" width="34" height="100" rx="6" fill="url(#pGrad2)" opacity=".4"/>
+      <rect x="128" y="110" width="34" height="90" rx="6" fill="url(#pGrad2)" opacity=".35"/>
+      <rect x="208" y="120" width="34" height="80" rx="6" fill="url(#pGrad2)" opacity=".3"/>
+      <rect x="288" y="130" width="34" height="70" rx="6" fill="url(#pGrad2)" opacity=".25"/>
+      <polygon points="95,135 105,125 115,135" fill="#334155" stroke="#0ea5e9" stroke-width="1"/>
+      <polygon points="175,135 185,125 195,135" fill="#334155" stroke="#0ea5e9" stroke-width="1"/>
+      <polygon points="255,135 265,125 275,135" fill="#334155" stroke="#0ea5e9" stroke-width="1"/>
+      <defs><linearGradient id="pGrad2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.1"/><stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.5"/></linearGradient></defs>`
+  },
+  {
+    id: 'extrator-ultrassom',
+    name: 'Extrator com Ultrassom (UAE)',
+    tag: 'Extração',
+    shortDesc: 'Extração assistida por ultrassom que intensifica a transferência de massa, reduzindo tempo de processo e temperatura de operação.',
+    fullDesc: 'O Extrator com Ultrassom (Ultrasound Assisted Extraction) da Valthera aplica ondas ultrassônicas de alta potência para romper paredes celulares e acelerar a difusão de compostos bioativos. O resultado é uma extração mais rápida, eficiente e em temperaturas mais baixas, preservando compostos termossensíveis.',
+    features: [
+      'Frequência: 20-40 kHz ajustável',
+      'Potência ultrassônica até 3000W',
+      'Sonda ou banho ultrassônico',
+      'Controle de amplitude e pulsação',
+      'Redução de até 70% no tempo de extração',
+      'Operação em batelada ou contínua'
+    ],
+    svgColor: '#8b5cf6',
+    svgBg: 'linear-gradient(135deg, #120c29, #1a0f40)',
+    svgContent: `<rect x="110" y="70" width="90" height="170" rx="12" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect x="120" y="90" width="70" height="130" rx="8" fill="url(#pGrad3)" opacity=".3"/>
+      <line x1="155" y1="30" x2="155" y2="70" stroke="#a78bfa" stroke-width="3"/>
+      <circle cx="155" cy="25" r="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="1.5"/>
+      <!-- Ultrasound waves -->
+      <path d="M225 120 Q 240 130, 225 140 Q 210 150, 225 160" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity=".6"><animate attributeName="opacity" values=".6;.2;.6" dur="1.5s" repeatCount="indefinite"/></path>
+      <path d="M240 115 Q 260 130, 240 145 Q 220 160, 240 175" fill="none" stroke="#a78bfa" stroke-width="1" opacity=".4"><animate attributeName="opacity" values=".4;.1;.4" dur="1.5s" repeatCount="indefinite" begin=".3s"/></path>
+      <path d="M85 120 Q 70 130, 85 140 Q 100 150, 85 160" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity=".6"><animate attributeName="opacity" values=".6;.2;.6" dur="1.5s" repeatCount="indefinite" begin=".5s"/></path>
+      <circle cx="140" cy="150" r="3" fill="#8b5cf6" opacity=".5"><animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="170" cy="130" r="2" fill="#8b5cf6" opacity=".4"><animate attributeName="r" values="2;4;2" dur="2.5s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="170" r="2.5" fill="#8b5cf6" opacity=".35"><animate attributeName="r" values="2.5;4.5;2.5" dur="3s" repeatCount="indefinite"/></circle>
+      <defs><linearGradient id="pGrad3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.05"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.35"/></linearGradient></defs>`
+  },
+  {
+    id: 'recuperador-aromas',
+    name: 'Recuperador de Aromas',
+    tag: 'Recuperação',
+    shortDesc: 'Sistema de recuperação e concentração de compostos voláteis aromáticos, ideal para a indústria alimentícia e de bebidas.',
+    fullDesc: 'O Recuperador de Aromas Valthera captura e concentra compostos voláteis liberados durante processos térmicos como evaporação e destilação. Utiliza colunas de retificação e condensadores de alta eficiência para preservar o perfil aromático original do produto final.',
+    features: [
+      'Coluna de destilação multi-pratos',
+      'Condensadores de alta eficiência',
+      'Recuperação de até 95% dos voláteis',
+      'Integração com evaporadores existentes',
+      'Sistema CIP automático',
+      'Construção sanitária em aço inox'
+    ],
+    svgColor: '#10b981',
+    svgBg: 'linear-gradient(135deg, #0c2918, #0f3320)',
+    svgContent: `<rect x="80" y="40" width="40" height="220" rx="6" fill="none" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="85" y="60" width="30" height="180" rx="4" fill="url(#pGrad4)" opacity=".3"/>
+      <line x1="80" y1="100" x2="120" y2="100" stroke="#10b981" stroke-width=".5" opacity=".5"/>
+      <line x1="80" y1="140" x2="120" y2="140" stroke="#10b981" stroke-width=".5" opacity=".5"/>
+      <line x1="80" y1="180" x2="120" y2="180" stroke="#10b981" stroke-width=".5" opacity=".5"/>
+      <line x1="120" y1="80" x2="180" y2="80" stroke="#334155" stroke-width="3"/>
+      <line x1="180" y1="80" x2="180" y2="140" stroke="#334155" stroke-width="3"/>
+      <rect x="160" y="140" width="60" height="80" rx="8" fill="none" stroke="#10b981" stroke-width="1.5"/>
+      <text x="172" y="185" fill="#34d399" font-size="9" font-family="monospace">❄</text>
+      <line x1="220" y1="180" x2="280" y2="180" stroke="#334155" stroke-width="2.5"/>
+      <rect x="280" y="160" width="40" height="60" rx="6" fill="none" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="288" y="185" width="24" height="25" rx="4" fill="url(#pGrad4)" opacity=".4"/>
+      <!-- Rising vapor -->
+      <circle cx="95" cy="200" r="2" fill="#34d399" opacity=".4"><animate attributeName="cy" values="200;60;200" dur="5s" repeatCount="indefinite"/></circle>
+      <circle cx="105" cy="220" r="1.5" fill="#34d399" opacity=".3"><animate attributeName="cy" values="220;80;220" dur="6s" repeatCount="indefinite"/></circle>
+      <defs><linearGradient id="pGrad4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.05"/><stop offset="100%" stop-color="#10b981" stop-opacity="0.4"/></linearGradient></defs>`
+  },
+  {
+    id: 'decanter',
+    name: 'Decanter',
+    tag: 'Separação',
+    shortDesc: 'Centrífuga decanter horizontal para separação contínua de sólidos e líquidos com alta eficiência e capacidade de processamento.',
+    fullDesc: 'O Decanter Valthera é uma centrífuga horizontal de alto desempenho projetada para separação contínua sólido-líquido. Com velocidade diferencial controlada por inversor, oferece separação precisa em processos de grande volume, sendo ideal para clarificação, desidratação e classificação de fases.',
+    features: [
+      'Velocidade: até 5.000 RPM',
+      'Scroll diferencial com inversor',
+      'Alimentação contínua',
+      'Descarga automática de sólidos',
+      'Bowl em aço inox com proteção anti-desgaste',
+      'Capacidade de até 80 m³/h'
+    ],
+    svgColor: '#f59e0b',
+    svgBg: 'linear-gradient(135deg, #29200c, #33280f)',
+    svgContent: `<ellipse cx="185" cy="155" rx="130" ry="50" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect x="55" y="110" width="260" height="90" rx="45" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+      <line x1="185" y1="110" x2="185" y2="200" stroke="#f59e0b" stroke-width=".5" stroke-dasharray="4 3"/>
+      <!-- Rotation indicator -->
+      <path d="M140 130 A 50 30 0 0 1 230 130" fill="none" stroke="#fbbf24" stroke-width="1" opacity=".5" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" values="0;-12" dur="1s" repeatCount="indefinite"/></path>
+      <!-- Inlet -->
+      <line x1="185" y1="80" x2="185" y2="110" stroke="#334155" stroke-width="3"/>
+      <polygon points="178,85 185,70 192,85" fill="#334155" stroke="#f59e0b" stroke-width="1"/>
+      <!-- Outlets -->
+      <line x1="60" y1="155" x2="30" y2="175" stroke="#334155" stroke-width="2.5"/>
+      <text x="10" y="195" fill="#fbbf24" font-size="8" font-family="monospace">Sólido</text>
+      <line x1="310" y1="155" x2="340" y2="135" stroke="#334155" stroke-width="2.5"/>
+      <text x="320" y="125" fill="#fbbf24" font-size="8" font-family="monospace">Líquido</text>
+      <!-- Interior separation -->
+      <rect x="100" y="135" width="170" height="40" rx="20" fill="url(#pGrad5)" opacity=".25"/>
+      <defs><linearGradient id="pGrad5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f59e0b" stop-opacity="0.5"/><stop offset="50%" stop-color="#f59e0b" stop-opacity="0.1"/><stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.4"/></linearGradient></defs>`
+  },
+  {
+    id: 'liofilizador',
+    name: 'Liofilizador',
+    tag: 'Processamento',
+    shortDesc: 'Equipamento de liofilização (freeze-drying) para secagem a vácuo de produtos sensíveis ao calor, preservando propriedades e bioatividade.',
+    fullDesc: 'O Liofilizador Valthera realiza a secagem por sublimação: o produto é congelado e então submetido a vácuo, removendo a água diretamente do estado sólido para o gasoso. Este processo preserva a estrutura celular, aromas, vitaminas e princípios ativos termossensíveis.',
+    features: [
+      'Temperatura de condensação até -80°C',
+      'Vácuo inferior a 0,1 mbar',
+      'Prateleiras aquecidas com controle PID',
+      'Ciclos de liofilização programáveis',
+      'Sensores de umidade e pressão in-line',
+      'Câmara em aço inox com porta panorâmica'
+    ],
+    svgColor: '#06b6d4',
+    svgBg: 'linear-gradient(135deg, #0c1929, #0f2740)',
+    svgContent: `<rect x="70" y="60" width="180" height="160" rx="12" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+      <!-- Shelves -->
+      <line x1="85" y1="100" x2="235" y2="100" stroke="#334155" stroke-width="2"/>
+      <line x1="85" y1="140" x2="235" y2="140" stroke="#334155" stroke-width="2"/>
+      <line x1="85" y1="180" x2="235" y2="180" stroke="#334155" stroke-width="2"/>
+      <!-- Products on shelves -->
+      <rect x="100" y="88" width="16" height="12" rx="2" fill="#22d3ee" opacity=".3"/>
+      <rect x="125" y="88" width="16" height="12" rx="2" fill="#22d3ee" opacity=".25"/>
+      <rect x="155" y="88" width="16" height="12" rx="2" fill="#22d3ee" opacity=".3"/>
+      <rect x="100" y="128" width="16" height="12" rx="2" fill="#22d3ee" opacity=".2"/>
+      <rect x="130" y="128" width="16" height="12" rx="2" fill="#22d3ee" opacity=".25"/>
+      <rect x="160" y="128" width="16" height="12" rx="2" fill="#22d3ee" opacity=".2"/>
+      <!-- Door window -->
+      <rect x="260" y="80" width="50" height="120" rx="8" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+      <rect x="268" y="90" width="34" height="100" rx="4" fill="rgba(6,182,212,.05)" stroke="#06b6d4" stroke-width=".5"/>
+      <!-- Vacuum pump -->
+      <line x1="160" y1="220" x2="160" y2="250" stroke="#334155" stroke-width="3"/>
+      <circle cx="160" cy="265" r="18" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="148" y="270" fill="#22d3ee" font-size="9" font-family="monospace">VAC</text>
+      <!-- Ice crystals -->
+      <text x="190" y="118" fill="#67e8f9" font-size="12" opacity=".4">❄</text>
+      <text x="200" y="168" fill="#67e8f9" font-size="10" opacity=".3">❄</text>`
+  },
+  {
+    id: 'coluna-adsorcao',
+    name: 'Coluna de Adsorção',
+    tag: 'Purificação',
+    shortDesc: 'Sistema de colunas para adsorção e purificação de compostos, com leito fixo ou fluidizado, para remoção seletiva de impurezas.',
+    fullDesc: 'A Coluna de Adsorção Valthera é utilizada em processos de purificação e separação cromatográfica em escala industrial. Com leito fixo de adsorventes como carvão ativado, resinas ou sílica-gel, permite a remoção seletiva de contaminantes, clarificação e fracionamento de extratos.',
+    features: [
+      'Leito fixo ou fluidizado',
+      'Adsorventes: carvão ativado, sílica, resinas',
+      'Operação em ciclos de carga e regeneração',
+      'Distribuidores de fluxo otimizados',
+      'Monitoramento de pressão e breakthrough',
+      'Diâmetros de 100mm a 1200mm'
+    ],
+    svgColor: '#a78bfa',
+    svgBg: 'linear-gradient(135deg, #120c29, #1a0f40)',
+    svgContent: `<rect x="140" y="30" width="60" height="240" rx="30" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+      <!-- Packing layers -->
+      <rect x="148" y="50" width="44" height="50" rx="4" fill="url(#pGrad6)" opacity=".3"/>
+      <rect x="148" y="110" width="44" height="50" rx="4" fill="url(#pGrad6)" opacity=".25"/>
+      <rect x="148" y="170" width="44" height="50" rx="4" fill="url(#pGrad6)" opacity=".2"/>
+      <!-- Dividers -->
+      <line x1="148" y1="100" x2="192" y2="100" stroke="#a78bfa" stroke-width=".8" stroke-dasharray="3 2"/>
+      <line x1="148" y1="160" x2="192" y2="160" stroke="#a78bfa" stroke-width=".8" stroke-dasharray="3 2"/>
+      <line x1="148" y1="220" x2="192" y2="220" stroke="#a78bfa" stroke-width=".8" stroke-dasharray="3 2"/>
+      <!-- Flow indicator -->
+      <polygon points="163,20 170,5 177,20" fill="#334155" stroke="#a78bfa" stroke-width="1"/>
+      <polygon points="163,280 170,295 177,280" fill="#334155" stroke="#a78bfa" stroke-width="1"/>
+      <!-- Side annotations -->
+      <text x="65" y="80" fill="#c4b5fd" font-size="8" font-family="monospace">Zona 1</text>
+      <line x1="108" y1="78" x2="140" y2="78" stroke="#a78bfa" stroke-width=".5" stroke-dasharray="2 2"/>
+      <text x="65" y="140" fill="#c4b5fd" font-size="8" font-family="monospace">Zona 2</text>
+      <line x1="108" y1="138" x2="140" y2="138" stroke="#a78bfa" stroke-width=".5" stroke-dasharray="2 2"/>
+      <text x="65" y="200" fill="#c4b5fd" font-size="8" font-family="monospace">Zona 3</text>
+      <line x1="108" y1="198" x2="140" y2="198" stroke="#a78bfa" stroke-width=".5" stroke-dasharray="2 2"/>
+      <!-- Flowing particles -->
+      <circle cx="165" cy="60" r="2" fill="#a78bfa" opacity=".5"><animate attributeName="cy" values="60;250" dur="4s" repeatCount="indefinite"/></circle>
+      <circle cx="175" cy="80" r="1.5" fill="#a78bfa" opacity=".4"><animate attributeName="cy" values="80;260" dur="5s" repeatCount="indefinite"/></circle>
+      <defs><linearGradient id="pGrad6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a78bfa" stop-opacity="0.3"/><stop offset="100%" stop-color="#a78bfa" stop-opacity="0.05"/></linearGradient></defs>`
+  },
+  {
+    id: 'extracao-microondas',
+    name: 'Extração com Micro-ondas',
+    tag: 'Extração',
+    shortDesc: 'Sistema de extração assistida por micro-ondas (MAE) para aquecimento volumétrico rápido e uniforme, com drástica redução no tempo de processo.',
+    fullDesc: 'A Extração com Micro-ondas (Microwave Assisted Extraction) da Valthera aplica radiação eletromagnética para aquecer o solvente e a matriz de forma volumétrica e instantânea. O aquecimento interno acelera a ruptura celular e a difusão dos compostos, reduzindo o tempo de extração de horas para minutos.',
+    features: [
+      'Potência: até 2000W (magnetron)',
+      'Frequência: 2.450 MHz',
+      'Reatores em vidro borossilicato ou PTFE',
+      'Controle de temperatura e pressão em tempo real',
+      'Redução de até 90% no tempo de processo',
+      'Sistema de segurança contra sobrepressão'
+    ],
+    svgColor: '#ef4444',
+    svgBg: 'linear-gradient(135deg, #290c0c, #401010)',
+    svgContent: `<rect x="90" y="60" width="160" height="120" rx="10" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <!-- Door -->
+      <rect x="95" y="65" width="110" height="110" rx="6" fill="rgba(239,68,68,.03)" stroke="#ef4444" stroke-width=".5"/>
+      <!-- Inner vessel -->
+      <rect x="115" y="95" width="70" height="55" rx="6" fill="none" stroke="#f87171" stroke-width="1"/>
+      <rect x="122" y="110" width="56" height="30" rx="4" fill="url(#pGrad7)" opacity=".3"/>
+      <!-- Microwave rays -->
+      <path d="M220 100 C 230 110, 225 120, 235 130" fill="none" stroke="#f87171" stroke-width="1.5" opacity=".5"><animate attributeName="opacity" values=".5;.15;.5" dur="1s" repeatCount="indefinite"/></path>
+      <path d="M230 95 C 240 108, 235 122, 245 135" fill="none" stroke="#f87171" stroke-width="1" opacity=".35"><animate attributeName="opacity" values=".35;.1;.35" dur="1s" repeatCount="indefinite" begin=".2s"/></path>
+      <path d="M240 90 C 252 106, 247 122, 258 138" fill="none" stroke="#f87171" stroke-width=".8" opacity=".25"><animate attributeName="opacity" values=".25;.05;.25" dur="1s" repeatCount="indefinite" begin=".4s"/></path>
+      <!-- Control panel -->
+      <rect x="90" y="190" width="160" height="40" rx="6" fill="none" stroke="#334155" stroke-width="1"/>
+      <rect x="105" y="198" width="50" height="24" rx="3" fill="#0f172a" stroke="#ef4444" stroke-width=".5"/>
+      <text x="112" y="214" fill="#f87171" font-size="9" font-family="monospace">2450M</text>
+      <circle cx="190" cy="210" r="8" fill="none" stroke="#ef4444" stroke-width="1"/>
+      <line x1="190" y1="210" x2="195" y2="205" stroke="#f87171" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="220" cy="210" r="5" fill="#22c55e" opacity=".6"/>
+      <defs><linearGradient id="pGrad7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity="0.1"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0.4"/></linearGradient></defs>`
+  }
+];
+
+// ---- Render Product Cards ----
+function renderProducts() {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = products.map((p, i) => `
+    <div class="product-card reveal reveal-delay-${(i % 4) + 1}" data-product-id="${p.id}" onclick="openModal('${p.id}')">
+      <div class="product-card-img">
+        <svg viewBox="0 0 370 230" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background: ${p.svgBg};">
+          ${p.svgContent}
+        </svg>
+        <div class="img-overlay"></div>
+      </div>
+      <div class="product-card-body">
+        <span class="product-tag">${p.tag}</span>
+        <h3>${p.name}</h3>
+        <p>${p.shortDesc}</p>
+        <span class="product-link">
+          Ver Detalhes
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ---- Modal ----
+function openModal(productId) {
+  const p = products.find(x => x.id === productId);
+  if (!p) return;
+
+  document.getElementById('modal-img').innerHTML = `
+    <svg viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; background: ${p.svgBg};">
+      ${p.svgContent}
+    </svg>`;
+  document.getElementById('modal-tag').textContent = p.tag;
+  document.getElementById('modal-title').textContent = p.name;
+  document.getElementById('modal-desc').textContent = p.fullDesc;
+
+  const featuresList = document.getElementById('modal-features-list');
+  featuresList.innerHTML = p.features.map(f => `
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      ${f}
+    </li>`).join('');
+
+  document.getElementById('modal-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-overlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ---- Navbar Scroll ----
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ---- Hamburger ----
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+// ---- Scroll Reveal ----
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ---- Particles Canvas ----
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 60;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.8 + .4,
+        dx: (Math.random() - .5) * .35,
+        dy: (Math.random() - .5) * .35,
+        opacity: Math.random() * .5 + .1
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(6,182,212,${p.opacity})`;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(6,182,212,${.08 * (1 - dist / 120)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  createParticles();
+  draw();
+  window.addEventListener('resize', () => { resize(); createParticles(); });
+}
+
+// ---- Counter Animation ----
+function animateCounters() {
+  document.querySelectorAll('.hero-stat h3').forEach(el => {
+    const target = el.textContent;
+    const num = parseInt(target);
+    if (isNaN(num)) return;
+
+    const suffix = target.replace(String(num), '');
+    let current = 0;
+    const step = Math.ceil(num / 60);
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= num) {
+        current = num;
+        clearInterval(interval);
+      }
+      el.textContent = current + suffix;
+    }, 25);
+  });
+}
+
+// ---- Form Submit ----
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.innerHTML = `
+    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+    Enviando...`;
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.innerHTML = `
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Mensagem Enviada!`;
+    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+
+    setTimeout(() => {
+      btn.innerHTML = `Enviar Mensagem
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
+      btn.style.background = '';
+      btn.disabled = false;
+      document.getElementById('contact-form').reset();
+    }, 3000);
+  }, 1500);
+}
+
+// ---- Smooth scroll for anchor links ----
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ---- Add spin keyframe for loading ----
+const style = document.createElement('style');
+style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+document.head.appendChild(style);
+
+// ---- Init ----
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  initParticles();
+  animateCounters();
+
+  // Re-observe dynamically rendered product cards
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+});
+
+</script>
+</body>
+</html>
